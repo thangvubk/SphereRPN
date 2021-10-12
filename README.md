@@ -1,4 +1,5 @@
 # SphereRPN
+
 Code for the paper **SphereRPN: Learning Spheres for High-Quality Region Proposals on 3D Point Clouds Object Detection**, ICIP 2021.
 
 **Authors**: Thang Vu, Kookhoi Kim, Haeyong Kang, Xuan Thanh Nguyen, Tung M. Luu, Chang D. Yoo
@@ -135,41 +136,3 @@ c. To test with a pretrained model, run
 ```
 CUDA_VISIBLE_DEVICES=0 python test.py --config config/pointgroup_default_scannet.yaml --pretrain $PATH_TO_PRETRAIN_MODEL$
 ```
-
-## Pretrained Model
-We provide a pretrained model trained on ScanNet v2 dataset. Download it [here](https://drive.google.com/file/d/1wGolvj73i-vNtvsHhg_KXonNH2eB_6-w/view?usp=sharing). Its performance on ScanNet v2 validation set is 35.2/57.1/71.4 in terms of mAP/mAP50/mAP25.
-
-
-## Visualize
-To visualize the point cloud, you should first install [mayavi](https://docs.enthought.com/mayavi/mayavi/installation.html). Then you could visualize by running
-```
-cd util 
-python visualize.py --data_root $DATA_ROOT$ --result_root $RESULT_ROOT$ --room_name $ROOM_NAME$ --room_split $ROOM_SPLIT$ --task $TASK$
-```
-The visualization task could be `input`, `instance_gt`, `instance_pred`, `semantic_pred` and `semantic_gt`.
-
-## Results on ScanNet Benchmark 
-Quantitative results on ScanNet test set at the submisison time.
-![scannet_result](https://github.com/llijiang/PointGroup/blob/master/doc/scannet_benchmark.png)
-
-## TODO List
-- [ ] Distributed multi-GPU training
-
-## Citation
-If you find this work useful in your research, please cite:
-```
-@article{jiang2020pointgroup,
-  title={PointGroup: Dual-Set Point Grouping for 3D Instance Segmentation},
-  author={Jiang, Li and Zhao, Hengshuang and Shi, Shaoshuai and Liu, Shu and Fu, Chi-Wing and Jia, Jiaya},
-  journal={Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
-  year={2020}
-}
-```
-
-## Acknowledgement
-This repo is built upon several repos, e.g., [SparseConvNet](https://github.com/facebookresearch/SparseConvNet), [spconv](https://github.com/traveller59/spconv) and [ScanNet](https://github.com/ScanNet/ScanNet). 
-
-## Contact
-If you have any questions or suggestions about this repo, please feel free to contact me (lijiang@cse.cuhk.edu.hk).
-
-
