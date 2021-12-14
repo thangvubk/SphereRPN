@@ -16,8 +16,8 @@ This work was partly supported by Institute for Information & communications Tec
 
 ### Virtual Environment
 ```
-conda create -n pointgroup python==3.7
-source activate pointgroup
+conda create -n sphere_rpn python==3.7
+source activate sphere_rpn
 ```
 
 ### Install
