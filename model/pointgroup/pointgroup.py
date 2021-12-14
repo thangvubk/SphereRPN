@@ -171,21 +171,6 @@ def model_fn_decorator(test=False):
         spheres = spheres[0]
         masks = model.rpn_head.get_masks(spheres, coords_float)
         return masks.cpu().numpy(), spheres[:, 4].cpu().numpy(), semantic_scores.max(1)[1].cpu().numpy()
-        semantic_scores = ret['semantic_scores']  # (N, nClass) float32, cuda
-        pt_offsets = ret['pt_offsets']            # (N, 3), float32, cuda
-        if (epoch > cfg.prepare_epochs):
-            scores, proposals_idx, proposals_offset = ret['proposal_scores']
-
-        ##### preds
-        with torch.no_grad():
-            preds = {}
-            preds['semantic'] = semantic_scores
-            preds['pt_offsets'] = pt_offsets
-            if (epoch > cfg.prepare_epochs):
-                preds['score'] = scores
-                preds['proposals'] = (proposals_idx, proposals_offset)
-
-        return preds
 
     def model_fn(batch, model, epoch):
         ##### prepare input and forward
