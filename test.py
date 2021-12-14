@@ -210,7 +210,7 @@ if __name__ == '__main__':
     model_fn = model_fn_decorator(test=True)
 
     ##### load model
-    utils.checkpoint_restore(model, cfg.exp_path, cfg.config.split('/')[-1][:-5], use_cuda, cfg.test_epoch, dist=False, f=cfg.pretrain)      # resume from the latest epoch, or specify the epoch to restore
+    utils.checkpoint_restore(model, cfg.exp_path, cfg.config.split('/')[-1][:-5], use_cuda, cfg.test_epoch, dist=False, f=cfg.pretrain)
 
     ##### evaluate
     if cfg.dataset == 'scannetv2':
