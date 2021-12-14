@@ -4,3 +4,4 @@ plyfile
 tensorboardX
 pyyaml
 scipy
+tqdm
