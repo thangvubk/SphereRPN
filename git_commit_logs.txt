@@ -10,5 +10,5 @@ Aug : 0
 Sep : 0
 Oct : 3
 Nov : 1
-Dec : 31
-Total : 35
+Dec : 36
+Total : 40

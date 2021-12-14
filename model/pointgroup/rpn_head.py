@@ -84,14 +84,11 @@ class RPNHead(nn.Module):
 
     def get_anchors_single(self, anchor_generator, feat_coords, stride, meta_infos=None):
         batch_ids = feat_coords[:, 0].unique()
-        # pc_ranges = meta_infos['pc_range']
-        # voxel_size = meta_infos['voxel_size']
 
         batch_anchors = []
         for i, batch_id in enumerate(batch_ids):
             mask = feat_coords[:, 0] == batch_id
             _feat_coords = feat_coords[mask, 1:]
-            # pc_range = pc_ranges[i]
             anchors = anchor_generator.generate(_feat_coords, stride) #, pc_range, voxel_size)
             batch_anchors.append(anchors)
         return batch_anchors
