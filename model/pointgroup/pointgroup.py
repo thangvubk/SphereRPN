@@ -118,8 +118,6 @@ class PointGroup(nn.Module):
         :param batch_idxs: (N), int, cuda
         :param batch_offsets: (B + 1), int, cuda
         '''
-        ret = {}
-
         out = self.resnet(input)
         semantic_feats, fpn_feats = self.fpn(out)
         rpn_outs = self.rpn_head(fpn_feats)
