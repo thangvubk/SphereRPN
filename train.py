@@ -5,7 +5,6 @@ Written by Li Jiang
 
 import torch
 import torch.optim as optim
-import time, sys, os, random
 from tensorboardX import SummaryWriter
 import numpy as np
 
@@ -47,7 +46,6 @@ def train_epoch(train_loader, model, model_fn, optimizer, epoch):
     am_dict = {}
 
     model.train()
-    start_epoch = time.time()
     end = time.time()
     for i, batch in enumerate(train_loader):
         data_time.update(time.time() - end)
@@ -117,7 +115,6 @@ def eval_epoch(val_loader, model, model_fn, epoch):
                 label_id = 1
                 p['conf'] = scores[j]
                 p['label_id'] = label_id
-                gt_labels = batch['labels'].numpy()
                 semantic_inds = (semantic_pred != 0) & (semantic_pred != 1) & (semantic_pred != 20)
                 mask = masks[j]
                 p['pred_mask'] = mask & semantic_inds
