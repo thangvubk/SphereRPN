@@ -8,7 +8,7 @@ Jun : 0
 Jul : 0
 Aug : 0
 Sep : 0
-Oct : 2
-Nov : 0
-Dec : 0
-Total : 0
+Oct : 3
+Nov : 1
+Dec : 9
+Total : 13
