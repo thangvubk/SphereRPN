@@ -24,8 +24,8 @@ source activate sphere_rpn
 
 (1) Clone the repository.
 ```
-git clone https://github.com/llijiang/PointGroup.git --recursive 
-cd PointGroup
+git clone https://github.com//thangvubk/SphereRPN.git --recursive 
+cd SphereRPN
 ```
 
 (2) Install the dependent libraries.
