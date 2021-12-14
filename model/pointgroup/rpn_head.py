@@ -7,8 +7,8 @@ from .anchor_generator import AnchorGenerator
 from .anchor_target import anchor_target, delta2sphere
 from .utils import feats_at_batch, get_batch_ids, multi_apply
 
-from .utils import ConvModule, SubMConv3D, bias_init_with_prob, normal_init
-from .losses import FocalLoss, IoULoss, L1Loss, CrossEntropyLoss, SoftIoULoss
+from .utils import ConvModule, SubMConv3D, normal_init
+from .losses import IoULoss, L1Loss, CrossEntropyLoss, SoftIoULoss
 from .anchor_target import delta2sphere
 
 INF = 1e10
