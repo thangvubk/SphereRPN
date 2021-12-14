@@ -123,11 +123,6 @@ class PointGroup(nn.Module):
 
         # self.apply(self.set_bn_init)
 
-        #### fix parameter
-        module_map = {'input_conv': self.input_conv, 'unet': self.unet, 'output_layer': self.output_layer,
-                      'linear': self.linear, 'offset': self.offset, 'offset_linear': self.offset_linear,
-                      'score_unet': self.score_unet, 'score_outputlayer': self.score_outputlayer, 'score_linear': self.score_linear}
-
         for m in self.fix_module:
             mod = module_map[m]
             for param in mod.parameters():
