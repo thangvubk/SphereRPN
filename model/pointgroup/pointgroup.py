@@ -13,11 +13,8 @@ sys.path.append('../../')
 
 from lib.pointgroup_ops.functions import pointgroup_ops
 import math
-from .transformer import Transformer
 import torch.nn.functional as F
 from .loss import SetCriterion
-from .matcher import HungarianMatcher
-from .pos import PositionEmbeddingSine
 from .backbone import UBlock, ResidualBlock
 from .utils import SparseTensorWrapper
 from .resnet import ResNet, FPN
