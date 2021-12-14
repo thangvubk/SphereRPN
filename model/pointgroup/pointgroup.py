@@ -12,11 +12,7 @@ import sys
 sys.path.append('../../')
 
 from lib.pointgroup_ops.functions import pointgroup_ops
-import math
-import torch.nn.functional as F
-from .loss import SetCriterion
 from .backbone import UBlock, ResidualBlock
-from .utils import SparseTensorWrapper
 from .resnet import ResNet, FPN
 from .rpn_head import RPNHead
 
