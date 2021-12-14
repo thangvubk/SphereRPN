@@ -209,10 +209,6 @@ def model_fn_decorator(test=False):
         loss['loss_semantic'] = 0.2 * semantic_criterion(semantic_scores, labels)
         loss, log_vars = parse_losses(loss)
         return loss, None, log_vars, log_vars
-        # loss = model.loss_fn(ret, gt_infos)
-        loss = {}
-        loss['loss_semantic'] = semantic_criterion(ret['semantic_scores'], labels)
-        return loss['loss_semantic'], None, loss, loss
 
     def loss_fn(loss_inp, epoch):
 
