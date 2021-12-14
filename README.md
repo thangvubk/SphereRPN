@@ -24,7 +24,7 @@ source activate sphere_rpn
 
 (1) Clone the repository.
 ```
-git clone https://github.com//thangvubk/SphereRPN.git --recursive 
+git clone https://github.com/thangvubk/SphereRPN.git --recursive 
 cd SphereRPN
 ```
 
@@ -106,7 +106,7 @@ python prepare_data_inst.py --data_split test
 
 ## Training
 ```
-CUDA_VISIBLE_DEVICES=0 python train.py --config config/pointgroup_run1_scannet.yaml 
+CUDA_VISIBLE_DEVICES=0 python train.py --config config/pointgroup_default_scannet.yaml 
 ```
 You can start a tensorboard session by
 ```
@@ -115,27 +115,4 @@ tensorboard --logdir=./exp --port=6666
 
 ## Inference and Evaluation
 
-(1) If you want to evaluate on validation set, prepare the `.txt` instance ground-truth files as the following.
-```
-cd dataset/scannetv2
-python prepare_data_inst_gttxt.py
-```
-Make sure that you have prepared the `[scene_id]_inst_nostuff.pth` files before. 
-
-(2) Test and evaluate. 
-
-a. To evaluate on validation set, set `split` and `eval` in the config file as `val` and `True`. Then run 
-```
-CUDA_VISIBLE_DEVICES=0 python test.py --config config/pointgroup_run1_scannet.yaml
-```
-An alternative evaluation method is to set `save_instance` as `True`, and evaluate with the ScanNet official [evaluation script](https://github.com/ScanNet/ScanNet/blob/master/BenchmarkScripts/3d_evaluation/evaluate_semantic_instance.py).
-
-b. To run on test set, set (`split`, `eval`, `save_instance`) as (`test`, `False`, `True`). Then run
-```
-CUDA_VISIBLE_DEVICES=0 python test.py --config config/pointgroup_run1_scannet.yaml
-```
-
-c. To test with a pretrained model, run
-```
-CUDA_VISIBLE_DEVICES=0 python test.py --config config/pointgroup_default_scannet.yaml --pretrain $PATH_TO_PRETRAIN_MODEL$
-```
+CUDA_VISIBLE_DEVICES=0 python test.py --config config/pointgroup_default_scannet.yaml 
