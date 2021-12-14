@@ -5,7 +5,6 @@ Written by Li Jiang
 
 import argparse
 import yaml
-import os
 
 def get_parser():
     parser = argparse.ArgumentParser(description='Point Cloud Segmentation')
@@ -28,4 +27,3 @@ def get_parser():
 
 cfg = get_parser()
 setattr(cfg, 'exp_path', cfg.work_dir)
-# setattr(cfg, 'exp_path', os.path.join('exp', cfg.dataset, cfg.model_name, cfg.config.split('/')[-1][:-5]))

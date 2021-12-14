@@ -3,13 +3,10 @@ from functools import partial
 import numpy as np
 import torch
 import torch.nn as nn
-# from pcdet.core import AnchorGenerator, anchor_target, delta2box
 from .anchor_generator import AnchorGenerator
 from .anchor_target import anchor_target, delta2sphere
-# from pcdet.ops import nms_3d
 from .utils import feats_at_batch, get_batch_ids, multi_apply
 
-# from ..builder import build_loss
 from .utils import ConvModule, SubMConv3D, bias_init_with_prob, normal_init
 from .losses import FocalLoss, IoULoss, L1Loss, CrossEntropyLoss, SoftIoULoss
 from .anchor_target import delta2sphere

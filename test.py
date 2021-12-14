@@ -10,12 +10,12 @@ import random
 import os
 
 from util.config import cfg
-cfg.task = 'test'
 from util.log import logger
 import util.utils as utils
-import util.eval as eval
 from tqdm import tqdm
-from collections import Counter
+
+
+cfg.task = 'test'
 
 def init():
     global result_dir
