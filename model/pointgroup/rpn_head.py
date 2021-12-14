@@ -9,7 +9,6 @@ from .utils import feats_at_batch, get_batch_ids, multi_apply
 
 from .utils import ConvModule, SubMConv3D, normal_init
 from .losses import IoULoss, L1Loss, CrossEntropyLoss, SoftIoULoss
-from .anchor_target import delta2sphere
 
 INF = 1e10
 
