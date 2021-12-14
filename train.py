@@ -119,8 +119,6 @@ def eval_epoch(val_loader, model, model_fn, epoch):
                 p['label_id'] = label_id
                 gt_labels = batch['labels'].numpy()
                 semantic_inds = (semantic_pred != 0) & (semantic_pred != 1) & (semantic_pred != 20)
-                # semantic_inds = (gt_labels != -100) & (gt_labels != 0) & (gt_labels != 1)
-                # semantic_inds = (batch['labels'] - 2 + 1).numpy() == label_id
                 mask = masks[j]
                 p['pred_mask'] = mask & semantic_inds
                 pred.append(p)
