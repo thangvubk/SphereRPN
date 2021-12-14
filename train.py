@@ -188,7 +188,7 @@ if __name__ == '__main__':
             exit(0)
 
     ##### resume
-    start_epoch = utils.checkpoint_restore(model, cfg.exp_path, cfg.config.split('/')[-1][:-5], use_cuda)      # resume from the latest epoch, or specify the epoch to restore
+    start_epoch = utils.checkpoint_restore(model, cfg.exp_path, cfg.config.split('/')[-1][:-5], use_cuda)
     scheduler = MultiStepLR(optimizer, milestones=cfg.milestones, gamma=0.5)
 
     ##### train and val
