@@ -88,13 +88,6 @@ class PointGroup(nn.Module):
         self.rpn_head = RPNHead(256, 256, anchor_scale, anchor_strides)
         print(sum(p.numel() for p in self.resnet.parameters()))
         self.unet_last_conv = spconv.SubMConv3d(m, 100, kernel_size=1)
-        
-        # transformer
-        self.pos = PositionEmbeddingSine(normalize=True)
-        self.transformer = Transformer()
-        self.query_embed = nn.Embedding(100, 192)
-        self.class_embed = nn.Linear(192, 18 + 1)
-        self.loss_fn = SetCriterion(18, HungarianMatcher(), {'loss_ce': 1}, 0.1, ['labels'])
 
         self.output_layer = spconv.SparseSequential(
             norm_fn(64),
@@ -250,7 +243,6 @@ def model_fn_decorator(test=False):
         loss = {}
         loss['loss_semantic'] = semantic_criterion(ret['semantic_scores'], labels)
         return loss['loss_semantic'], None, loss, loss
-
 
     def loss_fn(loss_inp, epoch):
 
