@@ -105,7 +105,6 @@ def eval_epoch(val_loader, model, model_fn, epoch):
     with torch.no_grad():
         model = model.eval()
         for i, batch in enumerate(tqdm(val_loader)):
-            N = batch['feats'].shape[0]
             # pred_list:  for each scan:
             #                 for each instance
             #                     instance = dict(scan_id, label_id, mask, confidence)
