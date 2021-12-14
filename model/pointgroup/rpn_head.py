@@ -123,10 +123,6 @@ class RPNHead(nn.Module):
         flat_cls_scores = torch.cat([stensor.features.squeeze() for stensor in cls_scores], dim=0)
         flat_box_preds = torch.cat([stensor.features for stensor in box_preds], dim=0)
 
-        # cls loss
-        # import torch.nn.functional as F
-        # import pdb; pdb.set_trace()
-        # cls_loss = F.binary_cross_entropy_with_logits(flat_cls_scores, flat_label_targets.float())
         loss_cls = self.loss_cls(
             flat_cls_scores, flat_label_targets, weight=flat_label_weights, avg_factor=num_samples)
 
