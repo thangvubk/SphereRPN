@@ -213,8 +213,6 @@ if __name__ == '__main__':
     utils.checkpoint_restore(model, cfg.exp_path, cfg.config.split('/')[-1][:-5], use_cuda, cfg.test_epoch, dist=False, f=cfg.pretrain)      # resume from the latest epoch, or specify the epoch to restore
 
     ##### evaluate
-    # test(model, model_fn, data_name, cfg.test_epoch)
-
     if cfg.dataset == 'scannetv2':
         if data_name == 'scannet':
             from data.scannetv2_inst import Dataset
@@ -243,69 +241,15 @@ if __name__ == '__main__':
                 for k in range(1, 19):
                     p = {}
                     p['scan_id'] = i
-                    # label_id = 1
                     p['conf'] = scores[j]
-                    # p['label_id'] = label_id
                     gt_labels = batch['labels'].numpy()
                     fg_inds = (semantic_pred != 0) & (semantic_pred != 1) & (semantic_pred != 20)
-                    # semantic_inds = (gt_labels != -100) & (gt_labels != 0) & (gt_labels != 1)
-                    # semantic_inds = (batch['labels'] - 2 + 1).numpy() == label_id
                     mask = masks[j]
                     fg_inds = fg_inds & mask
-                    pred_class = k # Counter(semantic_pred[fg_inds.astype(np.bool)]).most_common(1)[0][0]
+                    pred_class = k
                     p['label_id'] = k
                     p['pred_mask'] = mask & (semantic_pred == (k + 1))
                     pred.append(p)
-
-            # pred = [] 
-            # for j in range(scores.shape[0]):
-            #     p = {}
-            #     p['scan_id'] = i
-            #     # label_id = 1
-            #     p['conf'] = scores[j]
-            #     # p['label_id'] = label_id
-            #     gt_labels = batch['labels'].numpy()
-            #     fg_inds = (semantic_pred != 0) & (semantic_pred != 1) & (semantic_pred != 20)
-            #     # semantic_inds = (gt_labels != -100) & (gt_labels != 0) & (gt_labels != 1)
-            #     # semantic_inds = (batch['labels'] - 2 + 1).numpy() == label_id
-            #     mask = masks[j]
-            #     fg_inds = fg_inds & mask
-            #     if fg_inds.any():
-            #         pred_class = Counter(semantic_pred[fg_inds.astype(np.bool)]).most_common(1)[0][0]
-            #         p['label_id'] = pred_class - 2 + 1
-
-            #         p['pred_mask'] = mask & (semantic_pred == pred_class)
-            #     else:
-            #         p['label_id'] = 0
-            #         p['pred_mask'] = mask & fg_inds
-            #     
-            #     
-            #     pred.append(p)
-
-            # pred = [] 
-            # for j in range(batch['gt_infos'][0]['labels'].shape[0]):
-            #     p = {}
-            #     p['scan_id'] = i
-            #     label_id = batch['gt_infos'][0]['labels'][j].numpy() + 1
-            #     p['conf'] = 1
-            #     p['label_id'] = label_id
-            #     gt_mask = batch['gt_infos'][0]['masks'][j].numpy()
-
-            #     sphere = batch['gt_infos'][0]['gt_spheres'][j].numpy()
-            #     center = sphere[:3]
-            #     radius = sphere[3]
-            #     coords = batch['locs_float'].numpy()
-            #     distance = np.linalg.norm(coords - center, axis=1)
-            #     gt_labels = batch['labels'].numpy()
-            #     semantic_inds = (gt_labels != -100) & (gt_labels != 0) & (gt_labels != 1)
-            #     # semantic_inds = (batch['labels'] - 2 + 1).numpy() == label_id
-            #     mask = distance <= radius
-            #     # import pdb; pdb.set_trace()
-            #     # if np.all(gt_mask == (gt_mask & mask)):
-            #     #     import pdb; pdb.set_trace()
-            #     p['pred_mask'] = mask & semantic_inds
-            #     pred.append(p)
-
             gt = ((batch['labels'] - 2 + 1) * 1000 + batch['instance_labels']).numpy()
             gts.append(gt)
             preds.append(pred)
