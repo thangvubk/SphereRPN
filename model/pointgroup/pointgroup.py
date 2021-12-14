@@ -6,14 +6,12 @@ Written by Li Jiang
 import torch
 import torch.nn as nn
 import spconv
-from spconv.modules import SparseModule
 import functools
 from collections import OrderedDict
 import sys
 sys.path.append('../../')
 
 from lib.pointgroup_ops.functions import pointgroup_ops
-from util import utils
 import math
 from .transformer import Transformer
 import torch.nn.functional as F
