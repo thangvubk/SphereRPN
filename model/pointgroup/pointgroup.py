@@ -139,13 +139,6 @@ class PointGroup(nn.Module):
             for m in self.pretrain_module:
                 print("Load pretrained " + m + ": %d/%d" % utils.load_model_param(module_map[m], pretrain_dict, prefix=m))
 
-    # @staticmethod
-    # def set_bn_init(m):
-    #     classname = m.__class__.__name__
-    #     if classname.find('BatchNorm') != -1:
-    #         m.weight.data.fill_(1.0)
-    #         m.bias.data.fill_(0.0)
-
     def init_weights(self):
         self.resnet.init_weights()
         self.fpn.init_weights()
