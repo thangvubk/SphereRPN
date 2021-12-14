@@ -121,12 +121,6 @@ class PointGroup(nn.Module):
         self.score_linear = nn.Linear(m, 1)
         self.init_weights()
 
-        #### load pretrain weights
-        if self.pretrain_path is not None:
-            pretrain_dict = torch.load(self.pretrain_path)
-            for m in self.pretrain_module:
-                print("Load pretrained " + m + ": %d/%d" % utils.load_model_param(module_map[m], pretrain_dict, prefix=m))
-
     def init_weights(self):
         self.resnet.init_weights()
         self.fpn.init_weights()
